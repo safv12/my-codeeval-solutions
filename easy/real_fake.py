@@ -41,7 +41,7 @@ def sum_of_segments_digits(segments):
     for segment in segments:
         second_digit = segment[1:2]
         fourth_digit = segment[3:5]
-        duplicated_digits += int(second_digit) + int(fourth_digit)
+        other_digits += int(second_digit) + int(fourth_digit)
 
     return duplicated_digits + other_digits
 
