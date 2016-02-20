@@ -28,9 +28,26 @@ def get_elements(test):
     return elements
 
 
+def get_lower(elements):
+    lower = None
+    for element in elements:
+        if lower == None:
+            lower = element
+        else:
+            if element < lower:
+                lower = element
+
+    return lower
+
+
 def get_winner(uniques, original_elements):
-    print(uniques)
-    print(original_elements)
+    lower = get_lower(uniques)
+
+    if lower != None:
+        print(original_elements.index(lower) + 1)
+    else:
+        print(0)
+
 
 
 def print_winner(elements, uniques, not_uniques, original_elements):
@@ -49,11 +66,14 @@ def print_winner(elements, uniques, not_uniques, original_elements):
     else:
         get_winner(uniques, original_elements)
 
+
+
 import sys
 test_cases = open(sys.argv[1], 'r')
 for test in test_cases:
 
+    original_elements = get_elements(test)
     test = get_elements(test)
-    print_winner(test, [], [], test)
+    print_winner(test, [], [], original_elements)
 
 test_cases.close()
